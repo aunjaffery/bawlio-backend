@@ -6,7 +6,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=production node src/main.js",
+    "start": "NODE_ENV=production node --es-module-specifier-resolution=node src/main.js",
     "dev": "nodemon --es-module-specifier-resolution=node -r dotenv/config src/main.js"
   },
   "dependencies": {
