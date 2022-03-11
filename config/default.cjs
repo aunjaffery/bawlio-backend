@@ -8,4 +8,12 @@ module.exports = {
     dialect: "postgres",
     logging: false,
   },
+  production: {
+    username: DB_USERNAME,
+    password: DB_PASSWORD,
+    database: "bawlio",
+    host: DB_HOST,
+    dialect: "postgres",
+    logging: false,
+  },
 };
