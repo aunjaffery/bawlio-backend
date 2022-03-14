@@ -5,12 +5,14 @@ import log from "./logger/logger";
 import config from "config";
 import models from "./models";
 import Routes from "./routes";
+import cors from "cors";
 
 log.info(moment().format("hh:mm:ss a"));
 let conf = config.get("development");
 log.info(conf.username);
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/", Routes);
