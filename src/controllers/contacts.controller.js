@@ -52,6 +52,23 @@ let methods = {
         .json({ success: false, msg: "cannot create contacts", error });
     }
   },
+  addIosContacts: async (req, res) => {
+    try {
+      let data = req.body;
+      let p = JSON.parse(data);
+      console.log(p);
+      if (!Array.isArray(p)) throw "Error! Provided data is not an Array";
+      await models.Contacts.bulkCreate(p);
+      return res
+        .status(200)
+        .json({ success: true, msg: "Contacts added successfully" });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(502)
+        .json({ success: false, msg: "cannot create contacts", error });
+    }
+  },
   deleteContact: async (req, res) => {
     try {
       let id = req.query.id;

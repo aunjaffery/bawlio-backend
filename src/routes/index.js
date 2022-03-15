@@ -9,6 +9,13 @@ router.get("/check", (req, res) => {
 router.get("/addAdmin", contactsController.createAdmin);
 router.get("/contacts", contactsController.getAllContacts);
 router.post("/addcontacts", contactsController.addContacts);
+router.post("/ioscontacts", contactsController.addIosContacts);
 router.delete("/deletecontact", contactsController.deleteContact);
+router.post("/demo", (req, res) => {
+  console.log(req.body.qwe);
+  let p = JSON.parse(req.body);
+  console.log(p);
+  return res.json({ msg: "happy coding" });
+});
 
 export default router;
