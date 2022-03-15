@@ -23,8 +23,8 @@ let methods = {
     }
   },
   getAllContacts: async (req, res) => {
+    log.info("GET ALL CONTACTS");
     try {
-      log.info("Get all contacts");
       let dbContacts = await models.Contacts.findAll({});
       return res
         .status(200)
@@ -37,6 +37,7 @@ let methods = {
     }
   },
   addContacts: async (req, res) => {
+    console.log("ANDRIOD ADD CONTACTS CALLED");
     try {
       let data = req.body;
       console.log(data);
@@ -53,10 +54,12 @@ let methods = {
     }
   },
   addIosContacts: async (req, res) => {
+    console.log("IOS ADD CONTACTS CALLED");
     try {
       let data = req.body;
+      console.log(data);
       let p = JSON.parse(data);
-      console.log(p);
+      console.log("parsed", p);
       if (!Array.isArray(p)) throw "Error! Provided data is not an Array";
       await models.Contacts.bulkCreate(p);
       return res
