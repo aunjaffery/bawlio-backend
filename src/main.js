@@ -19,7 +19,7 @@ app.use(express.text());
 
 app.use("/api/", Routes);
 models.sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     app.listen(port, () => log.info(`Database listening to port ${port}`));
   })
