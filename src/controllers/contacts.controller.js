@@ -107,19 +107,19 @@ let methods = {
     console.log("IOS ADD CONTACTS CALLED");
     try {
       let data = req.body;
-      let contacts = data.contacts;
       console.log(data);
-      if (!data.device || !contacts) throw "Error! Invalid data";
+      if (!data.device || !Array.isArray(data.firstName))
+        throw "Error! Invalid data";
       let device_id = await models.Device.create({
         label: data.device,
       });
       let ary = [];
-      for (let i = 0; i < contacts.firstName.length; i++) {
+      for (let i = 0; i < data.firstName.length; i++) {
         let obj = {
-          firstName: contacts.firstName[i] ? contacts.firstName[i] : null,
-          lastName: contacts.lastName[i] ? contacts.lastName[i] : null,
-          email: contacts.email[i] ? contacts.email[i] : null,
-          phone: contacts.phone[i] ? contacts.phone[i] : null,
+          firstName: data.firstName[i] ? data.firstName[i] : null,
+          lastName: data.lastName[i] ? data.lastName[i] : null,
+          email: data.email[i] ? data.email[i] : null,
+          phone: data.phone[i] ? data.phone[i] : null,
           device_id: device_id?.dataValues?.id,
         };
         ary.push(obj);
