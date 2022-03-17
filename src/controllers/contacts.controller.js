@@ -25,7 +25,9 @@ let methods = {
   getAllContacts: async (req, res) => {
     log.info("GET ALL CONTACTS");
     try {
-      let dbContacts = await models.Contacts.findAll({});
+      let dbContacts = await models.Contacts.findAll({
+        order: [["id", "desc"]],
+      });
       return res
         .status(200)
         .json({ success: true, msg: "all contacts", data: dbContacts });
