@@ -11,9 +11,9 @@ module.exports = {
   production: {
     username: DB_USERNAME,
     password: DB_PASSWORD,
-    database: "mysql",
+    database: "bawlio",
     host: DB_HOST,
-    dialect: "postgres",
+    dialect: "mysql",
     logging: false,
   },
 };
