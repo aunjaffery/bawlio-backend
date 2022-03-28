@@ -1,27 +1,7 @@
 import models from "../models";
-import utils from "../services/utils";
 import log from "../logger/logger";
 
 let methods = {
-  createAdmin: async (_, res) => {
-    try {
-      console.log("create admin");
-      const data = {
-        fullName: "Super Admin",
-        username: "superadmin",
-        password: "qwe123",
-      };
-      data.password = await utils.hashPassword(data.password);
-      console.log(data);
-      let created = await models.Admin.create(data);
-      res
-        .status(200)
-        .json({ success: true, msg: "admin created", data: created });
-    } catch (err) {
-      console.log(err);
-      res.status(502).json({ success: false, msg: "cannot create admin", err });
-    }
-  },
   getAllContacts: async (req, res) => {
     log.info("GET ALL CONTACTS");
     try {

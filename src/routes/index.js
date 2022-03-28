@@ -1,13 +1,19 @@
 import express from "express";
 import contactsController from "../controllers/contacts.controller";
+import adminController from "../controllers/admin.controller";
+import authPolicy from "../services/auth.policy";
+
 const router = express.Router();
 
 router.get("/check", (req, res) => {
   res.status(200).json({ msg: "All good" });
 });
 
-router.get("/addAdmin", contactsController.createAdmin);
-router.get("/contacts", contactsController.getAllContacts);
+router.get("/createAdmin", adminController.createAdmin);
+router.post("/login", adminController.login);
+router.get("/validation", authPolicy, adminController.validation);
+
+router.get("/contacts", authPolicy, contactsController.getAllContacts);
 
 router.get("/contactsbydevice", contactsController.contactsByDevice);
 

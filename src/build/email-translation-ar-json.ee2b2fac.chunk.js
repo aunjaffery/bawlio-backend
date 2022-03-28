@@ -1,0 +1,1 @@
+(self.webpackChunkasad_strapi=self.webpackChunkasad_strapi||[]).push([[2648],{62582:s=>{"use strict";s.exports={}}}]);
